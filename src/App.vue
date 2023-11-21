@@ -1,14 +1,23 @@
 <template>
-  <MainPage/>
+
+  <header>
+    <h1>Welcome to My Website</h1>
+    <nav>
+        <li><router-link to="/">Home</router-link></li>
+        <li><router-link to="/signup">Sign up</router-link></li>
+    </nav>
+    <router-view />
+  </header>
+
 </template>
 
 <script>
-import MainPage from './MainPage.vue';
+
 
 export default {
   name: 'App',
   components: {
-    MainPage
+    
   }
 }
 </script>
