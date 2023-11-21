@@ -1,23 +1,18 @@
 <template>
-
-  <header>
-    <h1>Welcome to My Website</h1>
-    <nav>
-        <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/signup">Sign up</router-link></li>
-    </nav>
-    <router-view />
-  </header>
-
+  <Header/>
+  <router-view/>
+  <Footer/>
 </template>
 
 <script>
-
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
-  components: {
-    
+  components: { 
+    Header,
+    Footer
   }
 }
 </script>

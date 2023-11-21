@@ -1,11 +1,9 @@
 <template>
   <header>
-    <h1>Welcome to My Website</h1>
+    <h1>Header</h1>
     <nav>
-      <ul>
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/signup">Sign up</router-link></li>
-      </ul>
     </nav>
   </header>
 </template>
