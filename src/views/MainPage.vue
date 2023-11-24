@@ -14,34 +14,23 @@
   
 <script>
 import Post from '../components/Post.vue';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'MainPage',
   components: {
     Post
   },
-  data() {
-    return {
-      posts: [],
-      error: null
-    };
+  computed: {
+    ...mapState(['posts'])
   },
-  mounted() {
+  created() {
     this.fetchPosts();
   },
   methods: {
-    fetchPosts() {
-      fetch('https://api.npoint.io/e49bbe98e965d535a9ce')
-        .then(response => response.json())
-        .then(data => {
-          this.posts = data;
-        })
-        .catch(error => {
-          this.error = 'Error loading posts: ' + error.message;
-        });
-    }
+    ...mapActions(['fetchPosts'])
   }
-}
+};
 </script>
   
 <style scoped></style>

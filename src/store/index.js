@@ -1,14 +1,26 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
 
-export default createStore({
+const store = createStore({
   state: {
-  },
-  getters: {
+    posts: []
   },
   mutations: {
+    setPosts(state, posts) {
+      state.posts = posts;
+    }
   },
   actions: {
-  },
-  modules: {
+    fetchPosts({ commit }) {
+      fetch('https://api.npoint.io/e49bbe98e965d535a9ce')
+        .then(response => response.json())
+        .then(data => {
+          commit('setPosts', data);
+        })
+        .catch(error => {
+          console.error('Error loading posts:', error);
+        });
+    }
   }
-})
+});
+
+export default store;
