@@ -3,11 +3,12 @@
     <h1 id="header">Welcome, traveler!</h1>
     <h2>Create an account</h2>
     <input class="input" placeholder="email or username" type="text">
-    <input class="input" v-model="password" @input="validatePassword" placeholder="password" type="password"><br>
+    <input class="input" v-model="password" @input="validatePassword" placeholder="password" type="password" required><br>
     <ul v-if="passwordErrors.length">
-      <li v-for="(error, index) in passwordErrors" :key="index" style="color: red">{{ error }}</li>
+      <li v-for="(error, index) in passwordErrors" :key="index" style="color: red" requires>{{ error }}</li>
     </ul>
-    <button class="confirm-button">Log in</button>
+    <button class="confirm-button" :disabled="passwordErrors.length > 0">Log in</button>
+
   </form>
 </template>
 
