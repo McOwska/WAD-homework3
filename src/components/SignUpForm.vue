@@ -65,8 +65,7 @@ export default {
   padding: 5%;
   margin: auto;
   text-align: center;
-  text-shadow: 1px 1px 4px rgb(100, 65, 42);
-  ;
+  text-shadow: 1px 1px 4px rgb(61, 38, 22);
   backdrop-filter: blur(10px);
   border-radius: 10px;
   margin-top: 30px;
