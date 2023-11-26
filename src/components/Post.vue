@@ -37,4 +37,10 @@ export default {
     height: auto;
     display: block;
 }
+.post {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    margin: 30px;
+    padding: 50px;
+}
 </style>
