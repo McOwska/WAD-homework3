@@ -18,9 +18,12 @@ export default {
 </script>
 
 <style scoped>
-.footer {
-  background-color: #f8f8f8;
-  padding: 20px;
-  text-align: center;
+footer {
+    padding: 10px;
+    background-image: url(../assets/bg_grainy_gradient.png);
+    background-size: 100%;
+    border-radius: 35px;
+    align-items: center;
+    border: 6px solid rgba(255, 255, 255, 0.658);
 }
 </style>

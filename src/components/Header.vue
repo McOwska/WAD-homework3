@@ -16,8 +16,12 @@ export default {
 
 <style scoped>
 header {
-  background-color: #f2f2f2;
-  padding: 20px;
+    padding: 10px;
+    background-image: url(../assets/bg_grainy_gradient.png);
+    background-size: 100%;
+    border-radius: 35px;
+    align-items: center;
+    border: 6px solid rgba(255, 255, 255, 0.658);
 }
 
 h1 {

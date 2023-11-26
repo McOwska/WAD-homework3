@@ -40,7 +40,6 @@ export default {
     height: auto;
     display: block;
 }
-
 button {
     cursor: pointer;
     background-image: url('~@/assets/thumbs-up.png');
@@ -53,5 +52,12 @@ button {
 
 .counter {
     margin-left: 30px;
+}
+
+.post {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    margin: 30px;
+    padding: 50px;
 }
 </style>
