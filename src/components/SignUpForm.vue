@@ -7,7 +7,7 @@
     <ul v-if="passwordErrors.length">
       <li v-for="(error, index) in passwordErrors" :key="index" style="color: red" requires>{{ error }}</li>
     </ul>
-    <button @click="navigateHome" class="confirm-button" :disabled="passwordErrors.length > 0">Log in</button>
+    <button @click="navigateHome" class="confirm-button" :disabled="passwordErrors.length > 0 || password.length === 0">Log in</button>
 
   </form>
 </template>
