@@ -7,7 +7,7 @@
     <ul v-if="passwordErrors.length">
       <li v-for="(error, index) in passwordErrors" :key="index" style="color: red" requires>{{ error }}</li>
     </ul>
-    <button class="confirm-button" :disabled="passwordErrors.length > 0">Log in</button>
+    <button @click="navigateHome" class="confirm-button" :disabled="passwordErrors.length > 0">Log in</button>
 
   </form>
 </template>
@@ -45,6 +45,11 @@ export default {
       }
       if (!/_/.test(this.password)) {
         this.passwordErrors.push("Password must include the '_' character.");
+      }
+    },
+    navigateHome() {
+      if (this.passwordErrors.length === 0) {
+        this.$router.push('/');
       }
     },
   },
