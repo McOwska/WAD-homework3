@@ -3,20 +3,21 @@ import { createStore } from 'vuex';
 const store = createStore({
     state: {
         posts: [],
-        counter: 0
     },
     mutations: {
         setPosts(state, posts) {
-            state.posts = posts;
+            state.posts = posts.map(post => ({ ...post, likes: 0 }));
         },
 
-        increaseLikeCounter(state) {
-            state.counter++
+        increaseLike(state, postContent) {
+            const post = state.posts.find(post => post.content === postContent);
+            if (post) {
+                post.likes++;
+            }
         },
 
-        resetLikes(state){
-            state.counter = 0
-            /* code that would reset all like counters*/
+        resetLikes(state) {
+            state.posts.forEach(post => post.likes = 0);
         }
     },
     actions: {
@@ -29,6 +30,10 @@ const store = createStore({
                 .catch(error => {
                     console.error('Error loading posts:', error);
                 });
+        },
+
+        increasePostLike({ commit }, postId) {
+            commit('increaseLike', postId);
         }
     }
 });

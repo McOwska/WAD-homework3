@@ -1,5 +1,5 @@
 <template>
-  <div class="post">
+  <div class="post" v-for="post in $store.state.posts" :key="post.id">
     <img class="icon" :src="post.usericon">
     <h2>{{ post.title }}</h2>
     <p>{{ post.content }}</p>
@@ -8,11 +8,12 @@
       <span class="author">{{ post.author }}</span>
       <span class="date">{{ post.date }}</span>
       <br>
-      <button @click="$store.commit('increaseLikeCounter')"></button>
-      <span class="counter">{{ $store.state.counter }} likes</span>
+      <button @click="$store.dispatch('increasePostLike', post.content)">Like</button>
+      <span class="counter">{{ post.likes }} likes</span>
     </div>
   </div>
 </template>
+
 
 <script>
 export default {
