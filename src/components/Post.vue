@@ -7,6 +7,9 @@
     <div class="post-footer">
       <span class="author">{{ post.author }}</span>
       <span class="date">{{ post.date }}</span>
+      <br>
+      <button @click="$store.commit('increaseLikeCounter')"></button>
+      <span class="counter">{{ $store.state.counter }} likes</span>
     </div>
   </div>
 </template>
@@ -36,5 +39,19 @@ export default {
     width: 100%;
     height: auto;
     display: block;
+}
+
+button {
+    cursor: pointer;
+    background-image: url('~@/assets/thumbs-up.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: 3px solid rgba(235, 223, 183, 0.758);
+}
+
+.counter {
+    margin-left: 30px;
 }
 </style>
