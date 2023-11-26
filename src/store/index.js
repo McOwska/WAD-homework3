@@ -30,6 +30,7 @@ const store = createStore({
                 .catch(error => {
                     console.error('Error loading posts:', error);
                 });
+            
         },
 
         increasePostLike({ commit }, postId) {

@@ -1,5 +1,5 @@
 <template>
-  <div class="post" v-for="post in $store.state.posts" :key="post.id">
+  <div class="post">
     <img class="icon" :src="post.usericon">
     <h2>{{ post.title }}</h2>
     <p>{{ post.content }}</p>
