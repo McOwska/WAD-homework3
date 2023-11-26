@@ -6,8 +6,8 @@
                 <Post :post="post" />
             </div>
             <div v-if="error" class="error">{{ error }}</div>
+            <button @click="$store.commit('resetLikes')">Reset likes</button>
         </div>
-        <button @click="$store.commit('resetLikes')">Reset likes</button>
         <div class="sidebar"></div>
     </div>
 </template>

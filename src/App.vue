@@ -19,18 +19,16 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  background-image: url(./assets/NSwitch_AnimalCrossingNewHorizons_bg_grass.jpg);
+  font-family: "Courier New", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 .grid {
     display: grid;
-    background-image: url(./assets/wallpaper_beige-pattern_repeating.jpg);
     grid-template-columns: 1fr 2fr 1fr;
     gap: 2vh 8vw;
-    margin: 10px auto;
 }
 </style>

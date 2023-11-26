@@ -1,14 +1,13 @@
 <template>
   <div class="post">
-    <img class="icon" :src="post.usericon">
+    <img class="icon" :src="post.usericon"><br>
+    <span class="author">{{ post.author }}</span><br>
     <h2>{{ post.title }}</h2>
     <p>{{ post.content }}</p>
     <img class="image" :src="post.image">
     <div class="post-footer">
-      <span class="author">{{ post.author }}</span>
-      <span class="date">{{ post.date }}</span>
-      <br>
-      <button @click="$store.dispatch('increasePostLike', post.content)">Like</button>
+      <span class="date">{{ post.date }}</span><br><br>
+      <button @click="$store.dispatch('increasePostLike', post.content)"></button>
       <span class="counter">{{ post.likes }} likes</span>
     </div>
   </div>
@@ -43,7 +42,7 @@ export default {
 }
 button {
     cursor: pointer;
-    background-image: url('~@/assets/thumbs-up.png');
+    background-image: url('../assets/positive_reaction_emoticon.png');
     background-size: cover;
     width: 50px;
     height: 50px;
