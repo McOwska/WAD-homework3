@@ -18,8 +18,8 @@ export default {
   name: "AppSignUpForm",
   data() {
     return {
-      currentYear: new Date().getFullYear(),
-      dummyText: 'Sign up here, dummy text',
+      // currentYear: new Date().getFullYear(),
+      // dummyText: 'Sign up here, dummy text',
       password: '',
       passwordErrors: [],
     };

@@ -22,7 +22,7 @@ const store = createStore({
     },
     actions: {
         fetchPosts({ commit }) {
-            fetch('https://api.npoint.io/e49bbe98e965d535a9ce')
+            fetch('http://localhost:3010/api/posts') 
                 .then(response => response.json())
                 .then(data => {
                     commit('setPosts', data);
@@ -30,8 +30,8 @@ const store = createStore({
                 .catch(error => {
                     console.error('Error loading posts:', error);
                 });
-            
         },
+    
 
         increasePostLike({ commit }, postId) {
             commit('increaseLike', postId);
