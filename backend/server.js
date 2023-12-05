@@ -1,18 +1,26 @@
 const express = require('express');
-const cors = require('cors');
+const pool = require('./database');
+const cors = require('cors')
+const port = process.env.PORT || 3010;
 
 const app = express();
+
 app.use(cors());
-const port = 3010; 
+app.use(express.json());
+
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
-app.get('/api/posts', (req, res) => {
-    console.log('Fetching posts...');
-    fetch('https://api.npoint.io/e49bbe98e965d535a9ce')
-        .then(response => response.json())
-        .then(posts => res.json(posts))
-        .catch(error => res.status(500).json({ error: 'Error fetching posts' }));
+app.get('/api/posts', async(req, res) => {
+    try {
+        console.log("get posts request has arrived");
+        const posts = await pool.query(
+            "SELECT * FROM posttable"
+        );
+        res.json(posts.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
 });
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
