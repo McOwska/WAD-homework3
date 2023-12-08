@@ -2,13 +2,14 @@
   <form class="form">
     <h1 id="header">Welcome, traveler!</h1>
     <h2>Create an account</h2>
-    <input class="input" placeholder="email or username" type="text">
+    <input class="input" v-model="username" placeholder="email or username" type="text">
     <input class="input" v-model="password" @input="validatePassword" placeholder="password" type="password" required><br>
     <ul v-if="passwordErrors.length">
       <li v-for="(error, index) in passwordErrors" :key="index" style="color: red" requires>{{ error }}</li>
     </ul>
-    <button @click="navigateHome" class="confirm-button" :disabled="passwordErrors.length > 0 || password.length === 0">Log in</button>
-
+    <p v-if="registrationStatus" class="registration-status">{{ registrationStatus }}</p>
+    <button @click.prevent="registerUser" class="confirm-button"
+      :disabled="passwordErrors.length > 0 || password.length === 0 || username.length === 0">Sign up</button>
   </form>
 </template>
 
@@ -18,10 +19,12 @@ export default {
   name: "AppSignUpForm",
   data() {
     return {
-      // currentYear: new Date().getFullYear(),
-      // dummyText: 'Sign up here, dummy text',
+      username: '',
       password: '',
       passwordErrors: [],
+      serverResponse: '',
+      registrationStatus: null,
+      isSubmitting: false, //prevent multiple submissions (for example, if user clicks button multiple times)
     };
   },
   methods: {
@@ -37,7 +40,7 @@ export default {
       if (!/[a-z].*[a-z]/.test(this.password)) {
         this.passwordErrors.push("Password must include at least two lowercase letters.");
       }
-      if (!/[A-Z].*[A-Z]/.test(this.password)) {
+      if (!/\d/.test(this.password)) {
         this.passwordErrors.push("Password must include at least one numeric value.");
       }
       if (!this.password.startsWith(this.password.match(/[A-Z]/))) {
@@ -52,6 +55,34 @@ export default {
         this.$router.push('/');
       }
     },
+    async registerUser() {
+      this.registrationStatus = null;
+
+      try {
+        const response = await fetch('http://localhost:3010/api/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: this.username,
+            password: this.password
+          })
+        });
+
+        if (!response.ok) {
+          const result = await response.text();
+          throw new Error(result || 'Registration failed');
+        }
+
+        this.registrationStatus = "User successfully created!";
+      } catch (error) {
+        console.error(error);
+        this.registrationStatus = error.message;
+      }
+    }
+
+
   },
 };
 </script>
@@ -107,6 +138,7 @@ textarea {
   padding-right: 10px;
   margin-top: 30px;
 }
+
 
 h1 {
   color: rgba(47, 47, 150);
