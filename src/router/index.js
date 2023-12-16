@@ -18,27 +18,32 @@ const router = createRouter({
         {
             path: '/signup',
             name: 'signup',
-            component: SignUpPage
+            component: SignUpPage,
         },
         {
             path: "/api/allposts",
             name: "AllPosts",
-            component: AllPosts
+            component: AllPosts,
+            meta: { requiresAuth: true }
         },
         {
             path: "/api/apost/:id",
             name: "APost",
-            component: APost
+            component: APost,
+            meta: { requiresAuth: true }
         },
         {
             path: "/api/addpost",
             name: "AddPost",
-            component: AddPost
+            component: AddPost,
+            meta: { requiresAuth: true }
+            
         },
         { //will route to AllPosts view if none of the previous routes apply
             path: "/:catchAll(.*)",
             name: "AllPosts",
-            component: AllPosts
+            component: AllPosts,
+            meta: { requiresAuth: true }
         },
 
         {
