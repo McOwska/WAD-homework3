@@ -9,7 +9,8 @@ const port = process.env.PORT || 3010;
 
 const app = express();
 
-app.use(cors({origin: 'http://localhost:8081', credentials: true }));
+// in shared project: localhost:8081
+app.use(cors({origin: 'http://localhost:8080', credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -36,7 +37,7 @@ app.post('/api/posts/', async(req, res) => {
         console.log("a post request has arrived");
         const post = req.body;
         const newpost = await pool.query(
-            "INSERT INTO posttable(title, body, urllink) values ($1, $2, $3)    RETURNING*", [post.title, post.body, post.urllink]
+            "INSERT INTO posttable(date, body) values ($1, $2)    RETURNING*", [post.date, post.body]
 // $1, $2, $3 are mapped to the first, second and third element of the passed array (post.title, post.body, post.urllink) 
 // The RETURNING keyword in PostgreSQL allows returning a value from the insert or update statement.
 // using "*" after the RETURNING keyword in PostgreSQL, will return everything
@@ -72,7 +73,7 @@ app.put('/api/posts/:id', async(req, res) => {
         const post = req.body;
         console.log("update request has arrived");
         const updatepost = await pool.query(
-            "UPDATE posttable SET (title, body, urllink) = ($2, $3, $4) WHERE id = $1", [id, post.title, post.body, post.urllink]
+            "UPDATE posttable SET (date, body) = ($2, $3) WHERE id = $1", [id, post.date, post.body]
         );
         res.json(updatepost);
     } catch (err) {
