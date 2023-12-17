@@ -91,7 +91,7 @@ export default {
         },
 
         formatSQLDate(sqlDate) {
-            const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'};
+            const options = { year: 'numeric', month: 'numeric', day: 'numeric'};
             const date = new Date(sqlDate);
             return date.toLocaleDateString('en-DE', options);
         },
