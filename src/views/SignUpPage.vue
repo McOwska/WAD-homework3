@@ -1,7 +1,7 @@
 <template>
   <div>
     <button @click="showLoginForm = !showLoginForm" class="toggle-button">
-      {{ showLoginForm ? "Sign Up" : "Log In" }}
+      {{ showLoginForm ? "Sign Up Instead?" : "Log In Instead?" }}
     </button>
 
     <div v-if="showLoginForm">
