@@ -80,7 +80,6 @@ export default {
                 });
 
                 if (response.ok) {
-                    console.log('All posts deleted successfully');
                     this.fetchPosts(); // Refresh the post list after deletion
                 } else {
                     const errorData = await response.json();

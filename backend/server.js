@@ -97,8 +97,6 @@ app.delete('/api/posts/:id', async(req, res) => {
 }); 
 
 app.delete('/api/allposts', async(req, res) => {
-    console.log("delete all posts request has starteeed");
-
     try {
         console.log("delete all posts request has arrived");
         // Delete all posts from the posttable
