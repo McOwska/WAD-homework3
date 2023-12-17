@@ -3,10 +3,13 @@
         <div class="sidebar"></div>
         <div>
             <h3>Contact Us!</h3>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
-                sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-                ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-        </div>
+            <p> Hi! We are Phil, Whitney and Tiffany! <br><br>
+            <img src="../assets/the_3_devs_headshot.png"><br><br>
+            We are very happy to assist You in any way we can. If you have any questions about our small application, please don't hesitate to write and ask!
+            <br><br><br><br>
+            phil.whit.tiff@email.com
+            </p>
+            </div>
         <div class="sidebar"></div>
     </div>
 </template>
@@ -40,4 +43,21 @@ h3 {
     background-repeat: round;
     border-radius: 10px;
     border: 8px solid rgba(255, 255, 255, 0.358);
-}</style>
+}
+
+p {
+    text-align: center;
+    background-color: rgba(250, 235, 215, 0.527);
+    padding: 45px;
+    padding-bottom: 15px;
+    border-radius: 35px;
+  }
+
+img {
+    align-content: center;
+    max-width: 300px;
+    border-radius: 50%;
+    border: 40px, color(antiquewhite);
+    
+}
+</style>
