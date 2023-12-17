@@ -55,10 +55,12 @@ export default {
 .form {
     max-width: 420px;
     margin: 30px auto;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.432);
     text-align: center;
     padding: 40px;
     border-radius: 10px;
+    border: 8px solid rgba(255, 255, 255, 0.358);
+
 }
 
 h3 {
@@ -87,6 +89,8 @@ input {
 }
 
 button {
+    border: 3px solid rgba(235, 223, 183, 0.758);
+    background-color: transparent;
     margin-top: 20px;
     border: 3px solid rgba(235, 223, 183, 0.758);
     cursor: pointer;
@@ -94,6 +98,10 @@ button {
     height: 40px;
     padding-left: 20px;
     padding-right: 20px;
+}
+button:hover {
+    background-color: rgba(231, 229, 195, 0.548);
+
 }
 
 

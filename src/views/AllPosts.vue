@@ -8,7 +8,7 @@
                     Log out
                 </button>
             </router-link>
-            <ul>
+            
                 <div class="item" v-for="post in posts" :key="post.id">
                     <!-- / We are putting an anchor for each post, when we click on it, we will be directed to the specific post view (/apost/) /  -->
                     <a class="singlepost" :href="'/api/apost/' + post.id">
@@ -17,7 +17,7 @@
                         <span class="date"> Originally posted: {{ formatSQLDate(post.date) }} </span><br />                        
                     </a>
                 </div>
-            </ul>
+            
             <div>
                 <router-link to="/api/addpost" v-slot="{ navigate }">
                     <button class="addPost" @click="navigate">
@@ -135,9 +135,12 @@ a {
     background-color: rgba(235, 223, 183, 0.486);
     border-radius: 20px;
     margin: 30px;
-    padding-top: 35px;
-    padding-bottom: 15px;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
     border: 8px solid rgba(255, 255, 255, 0.358);
+    text-align: justify;
 }
 
 
