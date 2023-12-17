@@ -14,7 +14,7 @@
                     <a class="singlepost" :href="'/api/apost/' + post.id">
                         <span class="body"> {{ post.body }} </span> <br />
                         <br />
-                        <span class="date"> Posted: {{ post.date }} </span><br />                        
+                        <span class="date"> Posted: {{ formatSQLDate(post.date) }} </span><br />                        
                     </a>
                 </div>
             </ul>
@@ -88,6 +88,12 @@ export default {
             } catch (error) {
                 console.error('Error deleting all posts:', error);
             }
+        },
+
+        formatSQLDate(sqlDate) {
+            const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'};
+            const date = new Date(sqlDate);
+            return date.toLocaleDateString('en-DE', options);
         },
         
 
