@@ -82,6 +82,7 @@ app.put('/api/posts/:id', async(req, res) => {
 });
 
 app.delete('/api/posts/:id', async(req, res) => {
+    // Delete a single post with <id>
     try {
         const { id } = req.params;
         //const post = req.body; // we do not need a body for a delete request
@@ -94,6 +95,21 @@ app.delete('/api/posts/:id', async(req, res) => {
         console.error(err.message);
     }
 }); 
+
+app.delete('/api/allposts', async(req, res) => {
+    console.log("delete all posts request has starteeed");
+
+    try {
+        console.log("delete all posts request has arrived");
+        // Delete all posts from the posttable
+       const deleteAllPosts = await pool.query("DELETE FROM posttable");
+        res.json(deleteAllPosts);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
 
 const generateJWT = (id) => {
     return jwt.sign({ id }, secret, {

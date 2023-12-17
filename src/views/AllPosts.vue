@@ -12,8 +12,9 @@
                 <div class="item" v-for="post in posts" :key="post.id">
                     <!-- / We are putting an anchor for each post, when we click on it, we will be directed to the specific post view (/apost/) /  -->
                     <a class="singlepost" :href="'/api/apost/' + post.id">
-                        <span class="date"> {{ post.date }} </span><br />
                         <span class="body"> {{ post.body }} </span> <br />
+                        <br />
+                        <span class="date"> Posted: {{ post.date }} </span><br />                        
                     </a>
                 </div>
             </ul>
@@ -23,7 +24,11 @@
                         Add Post
                     </button>
                 </router-link>
-                <button @click="deleteAll" class="deleteAll">Delete all</button>
+                <router-link to="/api/posts">
+                    <button class="deleteAllPosts" @click="deleteAllPosts">
+                        Delete all
+                    </button>
+                </router-link>
             </div>
         </div>
         <div class="sidebar"></div>
@@ -66,6 +71,27 @@ export default {
                 console.error('Logout error:', error);
             }
         },
+
+        async deleteAllPosts() {
+            // Delete all posts
+            try {
+                const response = await fetch('http://localhost:3010/api/allposts', {
+                method: 'DELETE',
+                });
+
+                if (response.ok) {
+                    console.log('All posts deleted successfully');
+                    this.fetchPosts(); // Refresh the post list after deletion
+                } else {
+                    const errorData = await response.json();
+                    console.error('Failed to delete all posts:', errorData.error);
+                }
+            } catch (error) {
+                console.error('Error deleting all posts:', error);
+            }
+        },
+        
+
     },
     mounted() {
         // call fetchPosts() when this element (AllPosts) mounts 
@@ -78,11 +104,17 @@ export default {
 <style scoped>
 button {
     border: 3px solid rgba(235, 223, 183, 0.758);
+    background-color: transparent;
     cursor: pointer;
     border-radius: 20px;
     height: 40px;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+button:hover {
+    background-color: rgba(231, 229, 195, 0.548);
+
 }
 
 h1 {
@@ -93,9 +125,6 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    text-decoration: underline;
-}
 
 .item {
     background-color: rgba(235, 223, 183, 0.758);
@@ -125,5 +154,11 @@ a:hover {
     border-radius: 10px;
     border: 8px solid rgba(255, 255, 255, 0.358);
 }
+
+.date {
+    color: black
+}
 </style>
+
+
   
