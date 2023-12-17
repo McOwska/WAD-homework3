@@ -14,7 +14,7 @@
                     <a class="singlepost" :href="'/api/apost/' + post.id">
                         <span class="body"> {{ post.body }} </span> <br />
                         <br />
-                        <span class="date"> Posted: {{ formatSQLDate(post.date) }} </span><br />                        
+                        <span class="date"> Originally posted: {{ formatSQLDate(post.date) }} </span><br />                        
                     </a>
                 </div>
             </ul>
@@ -132,10 +132,12 @@ a {
 
 
 .item {
-    background-color: rgba(235, 223, 183, 0.758);
-    border-radius: 10px;
+    background-color: rgba(235, 223, 183, 0.486);
+    border-radius: 20px;
     margin: 30px;
-    padding: 50px;
+    padding-top: 35px;
+    padding-bottom: 15px;
+    border: 8px solid rgba(255, 255, 255, 0.358);
 }
 
 
@@ -156,11 +158,13 @@ a {
     background-image: url(../assets/AC_wallpaper.jpg);
     background-size: 100%;
     background-repeat: round;
-    border-radius: 10px;
+    border-radius: 20px;
     border: 8px solid rgba(255, 255, 255, 0.358);
 }
 
 .date {
+    text-align: left;
+    font-size: smaller;
     color: black
 }
 </style>
